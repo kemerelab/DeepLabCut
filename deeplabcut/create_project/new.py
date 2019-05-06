@@ -63,8 +63,10 @@ def create_new_project(project, experimenter, videos, working_directory=None, co
 
     # Create project and sub-directories
     if not DEBUG and project_path.exists():
-        print('Project "{}" already exists!'.format(project_path))
-        return
+        config_file = os.path.join(project_path, 'config.yaml')
+        if os.path.isfile(config_file):
+            print('Config file "{}" already exists! Not overwriting'.format(config_file))
+        return config_file
     video_path = project_path / 'videos'
     data_path = project_path / 'labeled-data'
     shuffles_path = project_path / 'training-datasets'
