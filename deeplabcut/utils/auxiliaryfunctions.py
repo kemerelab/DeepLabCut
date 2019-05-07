@@ -13,6 +13,8 @@ import numpy as np
 
 import ruamel.yaml
 
+import deeplabcut
+
 def create_config_template():
     """
     Creates a template for config.yaml file. This specific order is preserved while saving as yaml file.
@@ -258,3 +260,19 @@ def GetScorerName(cfg,shuffle,trainFraction,trainingsiterations='unknown'):
 
     scorer = 'DeepCut' + "_resnet" + str(cfg['resnet']) + "_" + Task + str(date) + 'shuffle' + str(shuffle) + '_' + str(trainingsiterations)
     return scorer
+
+
+def generate_default_config():
+
+    config_file = Path(deeplabcut.__file__) / 'deeplabcut/config_templates/config.yaml'  
+    with open(config_file, 'r') as f:
+        yaml = ruamel.yaml.YAML()
+        data = yaml.load(f)
+
+    return data
+
+def write_config_file(filepath, config):
+
+    with open(filepath, 'w') as f:
+        yaml = ruamel.yaml.YAML()
+        yaml.dump(config, f)
