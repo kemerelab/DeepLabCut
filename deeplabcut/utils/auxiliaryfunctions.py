@@ -264,14 +264,14 @@ def GetScorerName(cfg,shuffle,trainFraction,trainingsiterations='unknown'):
 
 def generate_default_config():
 
-    config_file = Path(deeplabcut.__file__) / 'deeplabcut/config_templates/config.yaml'  
+    config_file = Path(deeplabcut.__file__).parents[0] / 'config_templates/config.yaml'  
     with open(config_file, 'r') as f:
         yaml = ruamel.yaml.YAML()
         data = yaml.load(f)
 
     return data
 
-def write_config_file(filepath, config):
+def write_config_file(config, filepath):
 
     with open(filepath, 'w') as f:
         yaml = ruamel.yaml.YAML()
