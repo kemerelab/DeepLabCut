@@ -16,8 +16,11 @@ Some improvements we can make:
 Development Notes
 =================
 
-1. If we end up using a Qt-based GUI toolkit, we should use the officially supported PySide2 bindings. pip has the latest version
+1. Package manager: conda. Conda always. It is a lot better than pip at managing dependencies, and since packages are self-contained
+binaries, there is no need for system wide installations that tend to break things. The only time we should really need pip is to
+install DeepLabCut, and eventually we'll probably package our fork for conda anyway.
+2. If we end up using a Qt-based GUI toolkit, we should use the officially supported PySide2 bindings. pip has the latest version
 but sometimes there are conflicts with other packages, so we should stick with the version on conda-forge. It is built with an
 earlier version of Qt but we only need the basic features, so it will be ok. When 5.12+ gets packaged for conda, we can switch to that.
-2. It seems that DLC interfaces with a DeeperCut implementation, hence the .mat files. It could be worth investigating whether
+3. It seems that DLC interfaces with a DeeperCut implementation, hence the .mat files. It could be worth investigating whether
 we can eliminate this and rely only on pure Python data constructs.
