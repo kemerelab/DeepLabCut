@@ -11,6 +11,9 @@ Some improvements we can make:
 5. Place all yaml templates in separate files instead of hard-coding string inside .py file
 6. Remove need to execute shell script when downloading pre-trained models
 7. Consistent docstring, remove `ilikemyfunctionnamestobereallylong` type functions. This is not a Java project.
+8. Improve the ROI such that the user may select a diamond; handle the standardization of the cropping on our end.
+9. Remove meaningless outputs that are artifacts of packages (i.e. blank graph printing after cropping selection).
+10. Correct the formatting of the labelling gui. Currently, the x and y axes overlap, and intersect with the borders of the image.
 
 =================
 Development Notes
